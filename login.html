@@ -16,6 +16,8 @@ form { max-width:400px; margin:auto; background:#fff; padding:2rem; border-radiu
 input { display:block; width:90%; padding:0.7rem; margin:1rem auto; }
 button { background:#5a1d2f; color:white; border:none; padding:0.7rem 1.5rem; cursor:pointer; border-radius:5px; margin-top:0.5rem; transition:0.2s; }
 button:hover { background:#ffdab9; color:#5a1d2f; }
+#criarConta { background:#444; margin-top:1rem; }
+#criarConta:hover { background:#888; color:white; }
 </style>
 </head>
 <body>
@@ -33,7 +35,9 @@ button:hover { background:#ffdab9; color:#5a1d2f; }
 <h2>Login Cliente</h2>
 <form id="loginFormCliente">
 <input type="text" id="cliente" placeholder="Nome do Cliente" required>
+<input type="password" id="passCliente" placeholder="Palavra-passe" required>
 <button type="submit">Entrar</button>
+<button type="button" id="criarConta">Criar Conta</button>
 </form>
 
 <script src="script.js"></script>
