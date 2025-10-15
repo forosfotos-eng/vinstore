@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - VinStore</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+<style>
+body,h1,h2,h3,p,button,input { font-family:'Cinzel Decorative',cursive; margin:0; padding:0; }
+body { background:#f9f6f2; padding:2rem; }
+header { background:#5a1d2f; color:#fff; padding:1rem; text-align:center; }
+nav a { color:#fff; text-decoration:none; margin:0 1rem; font-weight:bold; }
+nav a:hover { color:#ffdab9; }
+h2 { color:#5a1d2f; text-align:center; margin-bottom:1.5rem; }
+form { max-width:400px; margin:auto; background:#fff; padding:2rem; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2); }
+input { display:block; width:90%; padding:0.7rem; margin:1rem auto; }
+button { background:#5a1d2f; color:white; border:none; padding:0.7rem 1.5rem; cursor:pointer; border-radius:5px; margin-top:0.5rem; transition:0.2s; }
+button:hover { background:#ffdab9; color:#5a1d2f; }
+</style>
+</head>
+<body>
+<header>
+<h1>Admin - Adicionar Produtos</h1>
+<nav>
+<a href="index.html">Catálogo</a>
+<a href="favoritos.html">Favoritos</a>
+<a href="carrinho.html">Carrinho</a>
+<button onclick="logout()">Logout Admin</button>
+</nav>
+</header>
+
+<h2>Adicionar Produto</h2>
+<form id="formProduto">
+<input type="text" id="nome" placeholder="Nome do Produto" required>
+<input type="number" id="preco" placeholder="Preço (€)" required>
+<input type="text" id="img" placeholder="URL da Imagem" required>
+<button type="submit">Adicionar Produto</button>
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>
