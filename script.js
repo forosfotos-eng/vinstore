@@ -1,6 +1,4 @@
-// ----------------------
 // Inicialização de produtos
-// ----------------------
 if (!localStorage.getItem("produtos")) {
     const produtos = [
         {nome:"Top Ed Hardy", preco:45, img:"https://edhardy.eu/cdn/shop/products/TrueToMyLoveCroppedVestTopPink_1024x1024.jpg?v=1633029393"},
@@ -51,7 +49,7 @@ if (formCliente) {
 }
 
 // ----------------------
-// Login Admin (mantido igual)
+// Login Admin
 // ----------------------
 const formAdmin = document.getElementById("loginFormAdmin");
 if (formAdmin) {
