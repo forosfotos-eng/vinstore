@@ -3,40 +3,104 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin - VinStore</title>
+<title>Admin | VinStore</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
 <style>
-body,h1,h2,h3,p,button,input { font-family:'Cinzel Decorative',cursive; margin:0; padding:0; }
-body { background:#f9f6f2; padding:2rem; }
-header { background:#5a1d2f; color:#fff; padding:1rem; text-align:center; }
-nav a { color:#fff; text-decoration:none; margin:0 1rem; font-weight:bold; }
-nav a:hover { color:#ffdab9; }
-h2 { color:#5a1d2f; text-align:center; margin-bottom:1.5rem; }
-form { max-width:400px; margin:auto; background:#fff; padding:2rem; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2); }
-input { display:block; width:90%; padding:0.7rem; margin:1rem auto; }
-button { background:#5a1d2f; color:white; border:none; padding:0.7rem 1.5rem; cursor:pointer; border-radius:5px; margin-top:0.5rem; transition:0.2s; }
-button:hover { background:#ffdab9; color:#5a1d2f; }
+body {
+  background-color: #f9f6f2;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 2rem;
+}
+h1 {
+  font-family: 'Cinzel Decorative', cursive;
+  color: #5a1d2f;
+}
+form {
+  background: #fff;
+  display: inline-block;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  margin-top: 2rem;
+}
+input {
+  display: block;
+  width: 250px;
+  margin: 0.7rem auto;
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+button {
+  background-color: #5a1d2f;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #a0435c;
+}
+#logout {
+  background: #999;
+  margin-top: 1rem;
+}
 </style>
 </head>
 <body>
-<header>
-<h1>Admin - Adicionar Produtos</h1>
-<nav>
-<a href="index.html">Catálogo</a>
-<a href="favoritos.html">Favoritos</a>
-<a href="carrinho.html">Carrinho</a>
-<button onclick="logout()">Logout Admin</button>
-</nav>
-</header>
 
-<h2>Adicionar Produto</h2>
-<form id="formProduto">
-<input type="text" id="nome" placeholder="Nome do Produto" required>
-<input type="number" id="preco" placeholder="Preço (€)" required>
-<input type="text" id="img" placeholder="URL da Imagem" required>
-<button type="submit">Adicionar Produto</button>
+<h1>VinStore Admin 🪞</h1>
+<h2>Adicionar Novo Produto</h2>
+
+<form id="addProductForm">
+  <input type="text" id="nome" placeholder="Nome do produto" required>
+  <input type="text" id="preco" placeholder="Preço (€)" required>
+  <input type="text" id="imagem" placeholder="URL da imagem" required>
+  <button type="submit">Adicionar</button>
 </form>
 
-<script src="script.js"></script>
+<button id="logout">Terminar Sessão</button>
+
+<p><a href="index.html">⬅️ Voltar à loja</a></p>
+
+<script>
+// --- Verificação de login ---
+if (localStorage.getItem('isLoggedIn') !== 'true') {
+  alert('Acesso restrito. Faça login primeiro.');
+  window.location.href = 'login.html';
+}
+
+// --- Adicionar novo produto ---
+const form = document.getElementById('addProductForm');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const nome = document.getElementById('nome').value;
+  const preco = document.getElementById('preco').value;
+  const imagem = document.getElementById('imagem').value;
+
+  const novoProduto = {
+    id: Date.now().toString(),
+    nome,
+    preco,
+    imagem
+  };
+
+  const produtosGuardados = JSON.parse(localStorage.getItem('produtos')) || [];
+  produtosGuardados.push(novoProduto);
+  localStorage.setItem('produtos', JSON.stringify(produtosGuardados));
+
+  alert('✅ Produto adicionado com sucesso!');
+  form.reset();
+});
+
+// --- Logout ---
+document.getElementById('logout').addEventListener('click', () => {
+  localStorage.removeItem('isLoggedIn');
+  window.location.href = 'login.html';
+});
+</script>
+
 </body>
 </html>
