@@ -1,6 +1,5 @@
-// --- Carregar produtos da memória ---
+// --- Carregar produtos na página principal ---
 const lista = document.getElementById("listaProdutos");
-
 if (lista) {
   const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
   lista.innerHTML = produtos.map(p => `
@@ -8,8 +7,14 @@ if (lista) {
       <img src="${p.img}" alt="${p.nome}">
       <h3>${p.nome}</h3>
       <p>${p.preco} €</p>
+      <button class="comprarBtn" onclick="comprar('${p.nome}', ${p.preco})">Comprar</button>
     </article>
   `).join("");
+}
+
+// --- Função Comprar ---
+function comprar(nome, preco) {
+  alert(`Produto adicionado ao carrinho:\n${nome} - ${preco} €`);
 }
 
 // --- Adicionar produtos (admin) ---
