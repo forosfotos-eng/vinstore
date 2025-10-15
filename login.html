@@ -6,12 +6,36 @@
 <title>Login Cliente - VinStore</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
 <style>
-body { font-family:'Cinzel Decorative',cursive; background:#f9f6f2; display:flex; justify-content:center; align-items:center; height:100vh; }
-form { background:#fff; padding:2rem; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2); text-align:center; }
-input { display:block; margin:1rem auto; padding:0.7rem; width:80%; }
-button { background:#5a1d2f; color:white; border:none; padding:0.8rem 1.5rem; cursor:pointer; }
+body,h1,h2,h3,p,button,input { font-family:'Cinzel Decorative',cursive; margin:0; padding:0; }
+body { background:#f9f6f2; padding:2rem; }
+header { background:#5a1d2f; color:#fff; padding:1rem; text-align:center; }
+nav a { color:#fff; text-decoration:none; margin:0 1rem; font-weight:bold; }
+nav a:hover { color:#ffdab9; }
+h2 { color:#5a1d2f; text-align:center; margin-bottom:1.5rem; }
+form { max-width:400px; margin:auto; background:#fff; padding:2rem; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2); }
+input { display:block; width:90%; padding:0.7rem; margin:1rem auto; }
+button { background:#5a1d2f; color:white; border:none; padding:0.7rem 1.5rem; cursor:pointer; border-radius:5px; margin-top:0.5rem; transition:0.2s; }
 button:hover { background:#ffdab9; color:#5a1d2f; }
 </style>
 </head>
 <body>
-<form id="loginFormCliente
+<header>
+<h1>Login Cliente</h1>
+<nav>
+<a href="index.html">Catálogo</a>
+<a href="favoritos.html">Favoritos</a>
+<a href="carrinho.html">Carrinho</a>
+<a href="login.html">Login Cliente</a>
+<a href="admin-login.html">Login Admin</a>
+</nav>
+</header>
+
+<h2>Login Cliente</h2>
+<form id="loginFormCliente">
+<input type="text" id="cliente" placeholder="Nome do Cliente" required>
+<button type="submit">Entrar</button>
+</form>
+
+<script src="script.js"></script>
+</body>
+</html>
