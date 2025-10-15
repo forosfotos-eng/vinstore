@@ -16,16 +16,42 @@ if (!localStorage.getItem("produtos")) {
 // ----------------------
 const formCliente = document.getElementById("loginFormCliente");
 if (formCliente) {
+    const criarBtn = document.getElementById("criarConta");
+    criarBtn.addEventListener("click", () => {
+        const nome = document.getElementById("cliente").value;
+        const pass = document.getElementById("passCliente").value;
+        if (!nome || !pass) { alert("Preencha nome e palavra-passe!"); return; }
+
+        let clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+        if (clientes.find(c => c.nome === nome)) {
+            alert("Cliente já existe!");
+            return;
+        }
+        clientes.push({nome, pass});
+        localStorage.setItem("clientes", JSON.stringify(clientes));
+        alert("Conta criada com sucesso! Agora faça login.");
+        formCliente.reset();
+    });
+
     formCliente.addEventListener("submit", e => {
         e.preventDefault();
-        const cliente = document.getElementById("cliente").value;
-        localStorage.setItem("clienteLogado", cliente);
-        window.location.href = "index.html";
+        const nome = document.getElementById("cliente").value;
+        const pass = document.getElementById("passCliente").value;
+        const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
+
+        const user = clientes.find(c => c.nome === nome && c.pass === pass);
+        if (user) {
+            localStorage.setItem("clienteLogado", nome);
+            alert("Login efetuado com sucesso!");
+            window.location.href = "index.html";
+        } else {
+            alert("Nome ou palavra-passe incorretos!");
+        }
     });
 }
 
 // ----------------------
-// Login Admin
+// Login Admin (mantido igual)
 // ----------------------
 const formAdmin = document.getElementById("loginFormAdmin");
 if (formAdmin) {
@@ -42,9 +68,7 @@ if (formAdmin) {
     });
 }
 
-// ----------------------
 // Logout Admin
-// ----------------------
 function logout() {
     localStorage.removeItem("logado");
     window.location.href = "index.html";
@@ -76,7 +100,7 @@ if (formProduto) {
 }
 
 // ----------------------
-// Renderizar catálogo
+// Renderizações catálogo, favoritos e carrinho
 // ----------------------
 function renderProdutos() {
     const lista = document.getElementById("listaProdutos");
@@ -94,18 +118,12 @@ function renderProdutos() {
     `).join("");
 }
 
-// ----------------------
-// Favoritos
-// ----------------------
 function renderFavoritos() {
     const listaFavoritos = document.getElementById("listaFavoritos");
     if (!listaFavoritos) return;
 
     let favs = JSON.parse(localStorage.getItem("favoritos")) || [];
-    if (favs.length === 0) {
-        listaFavoritos.innerHTML = "<p>Não há favoritos ainda.</p>";
-        return;
-    }
+    if (favs.length === 0) { listaFavoritos.innerHTML = "<p>Não há favoritos ainda.</p>"; return; }
 
     listaFavoritos.innerHTML = favs.map((p,i) => `
         <article>
@@ -127,9 +145,7 @@ function adicionarFavorito(index) {
         localStorage.setItem("favoritos", JSON.stringify(favs));
         alert(`${p.nome} adicionado aos favoritos!`);
         renderFavoritos();
-    } else {
-        alert(`${p.nome} já está nos favoritos.`);
-    }
+    } else { alert(`${p.nome} já está nos favoritos.`); }
 }
 
 function removerFavorito(index) {
@@ -139,18 +155,12 @@ function removerFavorito(index) {
     renderFavoritos();
 }
 
-// ----------------------
-// Carrinho
-// ----------------------
 function renderCarrinho() {
     const listaCarrinho = document.getElementById("listaCarrinho");
     if (!listaCarrinho) return;
 
     let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-    if (carrinho.length === 0) {
-        listaCarrinho.innerHTML = "<p>Carrinho vazio.</p>";
-        return;
-    }
+    if (carrinho.length === 0) { listaCarrinho.innerHTML = "<p>Carrinho vazio.</p>"; return; }
 
     listaCarrinho.innerHTML = carrinho.map((p,i) => `
         <article>
@@ -179,9 +189,6 @@ function removerCarrinho(index) {
     renderCarrinho();
 }
 
-// ----------------------
-// Inicializar renderizações
-// ----------------------
 document.addEventListener("DOMContentLoaded", () => {
     renderProdutos();
     renderFavoritos();
