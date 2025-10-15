@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VinStore - Marketplace Vintage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f6f2;
+    }
+    header {
+      background-color: #5a1d2f;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    header h1 {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 3rem;
+      color: #fff;
+      margin: 0;
+      letter-spacing: 3px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover { color: #ffdab9; }
+    main { padding: 2rem; text-align: center; }
+    h2 { color: #5a1d2f; font-family: 'Cinzel Decorative', cursive; }
+    .produtos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .produtos article {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    footer {
+      background: #5a1d2f;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>VinStore</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="login.html">Admin</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Peças Vintage em Destaque</h2>
+    <div class="produtos" id="listaProdutos"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 VinStore - Ana Rita Meneses</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
