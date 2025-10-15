@@ -6,39 +6,26 @@
 <title>Login Cliente - VinStore</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
 <style>
-body,h1,h2,h3,p,button,input { font-family:'Cinzel Decorative',cursive; margin:0; padding:0; }
-body { background:#f9f6f2; padding:2rem; }
-header { background:#5a1d2f; color:#fff; padding:1rem; text-align:center; }
-nav a { color:#fff; text-decoration:none; margin:0 1rem; font-weight:bold; }
-nav a:hover { color:#ffdab9; }
-h2 { color:#5a1d2f; text-align:center; margin-bottom:1.5rem; }
-form { max-width:400px; margin:auto; background:#fff; padding:2rem; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2); }
-input { display:block; width:90%; padding:0.7rem; margin:1rem auto; }
-button { background:#5a1d2f; color:white; border:none; padding:0.7rem 1.5rem; cursor:pointer; border-radius:5px; margin-top:0.5rem; transition:0.2s; }
-button:hover { background:#ffdab9; color:#5a1d2f; }
-#criarConta { background:#444; margin-top:1rem; }
-#criarConta:hover { background:#888; color:white; }
+body {background:#f9f6f2; font-family:'Cinzel Decorative',cursive; text-align:center; padding:2rem;}
+form {background:#fff; display:inline-block; padding:2rem; border-radius:12px; box-shadow:0 4px 10px rgba(0,0,0,0.15);}
+input {display:block; width:250px; margin:0.7rem auto; padding:0.6rem; border-radius:8px; border:1px solid #ccc;}
+button {background:#5a1d2f; color:#fff; border:none; padding:0.6rem 1.2rem; border-radius:8px; cursor:pointer;}
+button:hover {background:#a0435c;}
+#criarConta {background:#ffdab9; color:#5a1d2f; margin-top:0.5rem;}
 </style>
 </head>
 <body>
-<header>
 <h1>Login Cliente</h1>
-<nav>
-<a href="index.html">Catálogo</a>
-<a href="favoritos.html">Favoritos</a>
-<a href="carrinho.html">Carrinho</a>
-<a href="login.html">Login Cliente</a>
-<a href="admin-login.html">Login Admin</a>
-</nav>
-</header>
-
-<h2>Login Cliente</h2>
 <form id="loginFormCliente">
-<input type="text" id="cliente" placeholder="Nome do Cliente" required>
+<input type="text" id="cliente" placeholder="Nome de utilizador" required>
 <input type="password" id="passCliente" placeholder="Palavra-passe" required>
 <button type="submit">Entrar</button>
 <button type="button" id="criarConta">Criar Conta</button>
 </form>
+<p><a href="index.html">⬅️ Voltar à loja</a></p>
+<script src="script.js"></script>
+</body>
+</html>
 
 <script src="script.js"></script>
 </body>
