@@ -1,4 +1,6 @@
+// ----------------------
 // Inicialização de produtos
+// ----------------------
 if (!localStorage.getItem("produtos")) {
     const produtos = [
         {nome:"Top Ed Hardy", preco:45, img:"https://edhardy.eu/cdn/shop/products/TrueToMyLoveCroppedVestTopPink_1024x1024.jpg?v=1633029393"},
@@ -16,8 +18,8 @@ const formCliente = document.getElementById("loginFormCliente");
 if (formCliente) {
     const criarBtn = document.getElementById("criarConta");
     criarBtn.addEventListener("click", () => {
-        const nome = document.getElementById("cliente").value;
-        const pass = document.getElementById("passCliente").value;
+        const nome = document.getElementById("cliente").value.trim();
+        const pass = document.getElementById("passCliente").value.trim();
         if (!nome || !pass) { alert("Preencha nome e palavra-passe!"); return; }
 
         let clientes = JSON.parse(localStorage.getItem("clientes")) || [];
@@ -33,8 +35,8 @@ if (formCliente) {
 
     formCliente.addEventListener("submit", e => {
         e.preventDefault();
-        const nome = document.getElementById("cliente").value;
-        const pass = document.getElementById("passCliente").value;
+        const nome = document.getElementById("cliente").value.trim();
+        const pass = document.getElementById("passCliente").value.trim();
         const clientes = JSON.parse(localStorage.getItem("clientes")) || [];
 
         const user = clientes.find(c => c.nome === nome && c.pass === pass);
@@ -55,20 +57,34 @@ const formAdmin = document.getElementById("loginFormAdmin");
 if (formAdmin) {
     formAdmin.addEventListener("submit", e => {
         e.preventDefault();
-        const user = document.getElementById("user").value;
-        const pass = document.getElementById("pass").value;
-        if (user === "admin" && pass === "1234") {
-            localStorage.setItem("logado", "sim");
+        const user = document.getElementById("user").value.trim();
+        const pass = document.getElementById("pass").value.trim();
+
+        if(user === "admin" && pass === "1234") {
+            localStorage.setItem("adminLogado", "sim");
+            alert("Login admin efetuado com sucesso!");
             window.location.href = "admin.html";
         } else {
-            alert("Credenciais inválidas!");
+            alert("Usuário ou senha incorretos!");
         }
     });
 }
 
+// ----------------------
+// Verificação de acesso admin
+// ----------------------
+if (window.location.pathname.includes("admin.html")) {
+    if(localStorage.getItem("adminLogado") !== "sim") {
+        alert("Acesso restrito! Faça login como admin.");
+        window.location.href = "admin-login.html";
+    }
+}
+
+// ----------------------
 // Logout Admin
+// ----------------------
 function logout() {
-    localStorage.removeItem("logado");
+    localStorage.removeItem("adminLogado");
     window.location.href = "index.html";
 }
 
@@ -77,23 +93,21 @@ function logout() {
 // ----------------------
 const formProduto = document.getElementById("formProduto");
 if (formProduto) {
-    if (localStorage.getItem("logado") !== "sim") {
-        alert("Acesso restrito! Faça login como admin.");
-        window.location.href = "admin-login.html";
-    }
-
     formProduto.addEventListener("submit", e => {
         e.preventDefault();
-        const nome = document.getElementById("nome").value;
-        const preco = document.getElementById("preco").value;
-        const img = document.getElementById("img").value;
+        const nome = document.getElementById("nome").value.trim();
+        const preco = document.getElementById("preco").value.trim();
+        const img = document.getElementById("img").value.trim();
+
+        if(!nome || !preco || !img){ alert("Preencha todos os campos!"); return; }
 
         const produtos = JSON.parse(localStorage.getItem("produtos")) || [];
-        produtos.push({nome, preco, img});
+        produtos.push({nome, preco:Number(preco), img});
         localStorage.setItem("produtos", JSON.stringify(produtos));
 
         alert("Produto adicionado!");
         formProduto.reset();
+        renderProdutos();
     });
 }
 
@@ -192,4 +206,3 @@ document.addEventListener("DOMContentLoaded", () => {
     renderFavoritos();
     renderCarrinho();
 });
-
