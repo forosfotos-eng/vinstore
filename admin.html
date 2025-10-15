@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - VinStore</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #f9f6f2; padding: 2rem; text-align: center; }
-    input { margin: 0.5rem; padding: 0.5rem; }
-    button { background: #5a1d2f; color: white; border: none; padding: 0.6rem 1rem; cursor: pointer; margin-top: 0.5rem; border-radius: 5px; }
-    button:hover { background: #ffdab9; color: #5a1d2f; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - VinStore</title>
+<style>
+body { font-family: Arial,sans-serif; background:#f9f6f2; padding:2rem; text-align:center; }
+input { margin:0.5rem; padding:0.5rem; }
+button { background:#5a1d2f; color:white; border:none; padding:0.6rem 1rem; cursor:pointer; margin-top:0.5rem; border-radius:5px; }
+button:hover { background:#ffdab9; color:#5a1d2f; }
+</style>
 </head>
 <body>
-  <h2>Painel do Administrador</h2>
-  <form id="formProduto">
-    <input type="text" id="nome" placeholder="Nome do produto" required>
-    <input type="number" id="preco" placeholder="Preço (€)" required>
-    <input type="text" id="img" placeholder="URL da imagem" required>
-    <button type="submit">Adicionar</button>
-  </form>
+<h2>Painel do Administrador</h2>
+<form id="formProduto">
+<input type="text" id="nome" placeholder="Nome do produto" required>
+<input type="number" id="preco" placeholder="Preço (€)" required>
+<input type="text" id="img" placeholder="URL da imagem" required>
+<button type="submit">Adicionar</button>
+</form>
 
-  <button onclick="logout()">Sair</button>
+<button onclick="logout()">Sair</button>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
