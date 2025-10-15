@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - VinStore</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f6f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    input {
+      display: block;
+      margin: 1rem auto;
+      padding: 0.7rem;
+      width: 80%;
+    }
+    button {
+      background-color: #5a1d2f;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <form id="loginForm">
+    <h2>Login de Administrador</h2>
+    <input type="text" id="user" placeholder="Utilizador" required>
+    <input type="password" id="pass" placeholder="Palavra-passe" required>
+    <button type="submit">Entrar</button>
+  </form>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const user = document.getElementById("user").value;
+      const pass = document.getElementById("pass").value;
+      if (user === "admin" && pass === "1234") {
+        localStorage.setItem("logado", "sim");
+        window.location.href = "admin.html";
+      } else {
+        alert("Credenciais inválidas!");
+      }
+    });
+  </script>
+</body>
+</html>
